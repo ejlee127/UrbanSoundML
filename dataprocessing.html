@@ -122,7 +122,12 @@
                 <img src="images/dog_bark_reversed.png" class="card-img-bottom wav2-img" alt="Card image cap">
               </div>              
             </div>
-            
+            <div>
+              When n_mfcc=40, the reconstructed sound is this, which sounds much closer to the original:
+              <audio controls>
+                <source src="audio/reversed_n40.wav", type="audio/wav">
+              </audio>
+            </div>            
           </div>
         </div>
       </div>
@@ -132,13 +137,74 @@
           <div class="card-body">
             The returned MFCC from librosa.feature.mfcc() is a two-dimensional array of integers.
           </div>
-          <div>
+          <div class="card-body">
             <img src="images/dog_bark_mfcc_13.png" align="left">
-            In the image, the vertical height is determined by the number of coefficients of MFC(= n_mfcc)
+            In the image, the vertical height is determined by the number of coefficients(= n_mfcc)
             and the width is determined by the sample rate(sr) and duration. The left image has n_mfcc=13 as height,
             and 173 as width from sr=22,050 and duration=4 sec. Each small square inside represents a number(amplitude).
-            The returned MFCC has, in this example, a two-dimensional array of 13 by 173.
-            This means that each audio file 
+            The returned MFCC has, in this example, a two-dimensional array of 13 by 173.             
+            <div id="popup">
+              With these parameters, each audio file outputs 2249 numbers,
+              therefore in total the sample for
+              the machine learning algorithm can be a table
+              of 8,732 rows and 2,249 columns. First, we used pyspark-jbdc query to store the
+              table in AWS-RDS PostgresSQL. We faced an
+              <span>error,
+                <span>
+                  <img src="images/spark_jdbc_column_limit_error_message.png" alt="spark jdbc column limit">
+                </span>
+              </span>
+              saying the query has the limit as 1600 columns.
+            </div>
+          </div>
+        </div>
+        <div class="card card-big">
+          <h4 class="card-header"> Creating Samples from MFCC </h4>
+          <div class="card-body">
+            The goal of dataprocessing is to reduce the column size without losing important audio
+            features. We came up with three types of data processes constructing 'Sample 1, 2, 3':
+          </div>
+          <div class="card-group">
+            <div class="card">
+              <img src="images/input1.png" class="card-img-top wav2-img" alt="Card image cap">
+              <div class="card-body">
+                First, we focused on reducing the size by taking the average of the numbers
+                in the MFCC vector. Then each vector gives one scalar value, which might lose information.
+                We increased n_mfcc as 40, following each audio file produces 40 values. In total,
+                we obtained a sample table of the size 8,732 rows and 40 columns. 
+                We carried out  
+                <a href="experiment.html#experiment1" > experiment 1</a>
+              </div>
+            </div>
+            <div class="card">
+              <img src="images/input2.png" class="card-img-top wav2-img" alt="Card image cap">
+              <div class="card-body">
+                The second sample was taken from all the numbers in mfcc vector.
+                by setting n_mfcc=13.
+                We sliced each audio file to 1 second segment.
+                This one second audio data gives 44 values(from sr=22,050) for each mfcc vector.
+                So, 4 second length audio file produces 4 rows, 
+                each row has 44 by 13 matrix, when it is flattened, 572 length vector. 
+                We obtained a sample table of the size 30,825 rows and 574 columns. 
+                We carried out  
+                <a href="experiment.html#experiment2" > experiment 2</a>
+              </div>
+            </div>
+            <div class="card">
+              <img src="images/input3.png" class="card-img-top wav2-img" alt="Card image cap">
+              <div class="card-body">
+                When we run the Sequential model with previous samples,
+                still we were experiencing low accuracy with dropout and 
+                regulations. In the published paper of this original work,
+                the authors mentioned the statistical values of mfcc vectors.
+                Following their idea, we used scipy.stat.describe() method, returning
+                min, max, mean, var, skewness and kurtosis.
+                With n_mfcc= 30, each audio file produces 30 minimums, 30 maximums, and so on, which makes 180 length vector. So, the third input data has this form of table. 
+                Therefore, we obtained a sample table of the size 8,732 rows and 180 columns. 
+                With sample 3, we carried out  
+                <a href="experiment.html#experiment3" > experiment 3</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -159,6 +225,5 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-    
   </body>
 </html>
