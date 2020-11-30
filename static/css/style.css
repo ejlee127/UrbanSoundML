@@ -147,6 +147,14 @@ a:active {
   margin-right: auto;
 }
 
+.center-img {
+  width: 80%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 code {
   color: black;
   background-color: rgba(240, 240, 240, 0.801);
@@ -223,6 +231,9 @@ code {
 
 /* ---end:  hoverpopups type 1 ---- */
 
+#experiment .card-text{
+  margin: 10px
+}
 
 @media (max-width: 760px) {
   .body-font {
