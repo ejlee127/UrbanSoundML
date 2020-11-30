@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Urban Sound Classification</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Our CSS -->
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+   
+  </head>
+
+  <body >
+    <!-- Start of container -->
+    <div id="container-fluid">
+      <hr>
+      <div class="row"  id="top-row">
+        <h3>Urban Sound Classification using Machine Learning:
+          Experiment Results</h3>
+        <p>  </p>             
+      </div>
+      <hr>
+      <div class = "row" id="top-row">        
+        <div class="col-md-9">
+          Stating the final result first, the dashboard image drawn
+          by Tableau is below. For Experiment 2 and 3, we selected the
+          one set of parameters which gave the best average accuracy of
+          four accuracy values. Here, experiment 2 takes non-scaled sample but
+          the experiment 3 takes standardized sample. The result is interesting
+          because Experiment 2 input has all MFCC information but the accuracy is
+          worse than Experiment 3. The result shows SVC model provides better accuracy.
+          (nr: number of neurons, dp: dropout, ep: epoch, bs: batch size)
+          <table border="0" class="dataframe table table-responsive table-striped">
+            <thead>
+              <tr style="text-align: center;">      
+                <th>Experiment</th>      
+                <th>Sample</th>
+                <th>Model</th>    
+                <th>Accuracy</th> 
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td> 1</td>
+                <td> <a href="dataprocessing.html#sample1"> Sample 1</a> (scaled) </td>
+                <td> Sequential(nr=512, dp=0.5, ep=50, bs=32) </td>
+                <td> 0.53 </td>
+              </tr>
+              <tr>
+                <td> 2</td>
+                <td> <a href="dataprocessing.html#sample2"> Sample 2</a> (non-scaled) </td>
+                <td> Sequential(nr=256, dp=0.3, ep=40, bs=16) </td>
+                <td> 0.48 </td>
+              </tr>
+              <tr>
+                <td> 3</td>
+                <td> <a href="dataprocessing.html#sample3"> Sample 3</a> (scaled) </td>
+                <td> Sequential(nr=512, dp=0.5, ep=30, bs=32) </td>
+                <td> 0.65 </td>
+              </tr>
+              <tr>
+                <td> 4</td>
+                <td> <a href="dataprocessing.html#sample3"> Sample 3</a> (scaled) </td>
+                <td> SVC(kernel='rbf') </td>
+                <td> 0.66 </td>
+              </tr>
+            </tbody>
+          </table>
+          <img src="images/best_models.png">
+        </div>
+        <div class="col-md-2">
+          <div>
+            <a href="index.html" class="btn btn-primary btn-block" role="button">Home</a>
+            <a href="dataprocessing.html" class="btn btn-primary btn-block" role="button">Data Processing</a>
+            <a href="experiment.html" class="btn btn-primary btn-block" role="button">Experiments</a>
+            <a href="resources.html" class="btn btn-primary btn-block" role="button">Resources</a>
+          </div>
+        </div>
+      </div>
+      <div class = "row"> 
+        <div class="col-md-10">
+          <div class="card card-big" id="experiment">
+            <h4 class="card-header"> Detailed results of Sequential model</h4>
+            <h5 class="card-title"> Instances in X-axis of the following charts</h5>
+            <div class="card-text">
+              In training process using Sequential model, the parameters are selected
+              as the combination of the following values, which are 72 parameter sets.
+              <ul>
+                <li>number of neurons = [64, 128, 256, 512]</li>
+                <li>dropouts = [0.3, 0.4, 0.5]</li>
+                <li>epochs = [30, 40, 50]</li>
+                <li>batch sizes = [16, 32]</li>
+              </ul>
+              The 0th parameter is set of (nr=64, dp=0.3, ep=30, bs=16) and the final
+              parameter is (nr=512, dp=0.5, ep=50, bs=32).              
+            </div>
+            <h5 class="card-title"> Average accuracy of Exp1, 2 and 3</h5>
+            <img src="images/exp1_2_3_avg.png">
+            <h5 class="card-title"> Experiment 1</h5>
+            <img src="images/exp1_result.png">
+            <h5 class="card-title"> Experiment 2</h5>
+            <img src="images/exp2_result.png">
+            <h5 class="card-title"> Experiment 3</h5>
+            <img src="images/exp3_result.png">
+            <h5 class="card-title"> Experiment 4</h5>
+            <img src="images/exp4_result.png">
+          </div>
+        </div>        
+      </div>
+      <div class="row">
+        <div class="col-md-11">
+          <p class="p-tiny bottom"> Eunjeong Lee, ejlee127 at gmail dot com, last updated in Nov. 2020</p>
+        </div>
+      </div>
+    </div>
+    <!-- End of container  -->
+    
+    
+    <!-- d3 JavaScript -->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <!--<script src="static/js/app.js"></script>-->
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </body>
+</html>

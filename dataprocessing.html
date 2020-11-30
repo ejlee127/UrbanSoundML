@@ -48,8 +48,8 @@
         <div class="col-md-2">
           <div>
             <a href="index.html" class="btn btn-primary btn-block" role="button">Home</a>
-            <a href="experiment.html" class="btn btn-primary btn-block" role="button">Experiment</a>
-            <a href="result.html" class="btn btn-primary btn-block" role="button">Analysis</a>
+            <a href="experiment.html" class="btn btn-primary btn-block" role="button">Experiments</a>
+            <a href="result.html" class="btn btn-primary btn-block" role="button">Results</a>
             <a href="resources.html" class="btn btn-primary btn-block" role="button">Resources</a>
           </div>
         </div>
@@ -165,7 +165,8 @@
             features. We came up with three types of data processes constructing 'Sample 1, 2, 3':
           </div>
           <div class="card-group">
-            <div class="card">
+            <div class="card"  id="sample1">
+              <h5 class="card-title"> Sample 1</h5>
               <img src="images/input1.png" class="card-img-top wav2-img" alt="Card image cap">
               <div class="card-body">
                 First, we focused on reducing the size by taking the average of the numbers
@@ -173,10 +174,11 @@
                 We increased n_mfcc as 40, following each audio file produces 40 values. In total,
                 we obtained a sample table of the size 8,732 rows and 40 columns. 
                 We carried out  
-                <a href="experiment.html#experiment1" > experiment 1</a>
+                <a href="experiment.html#experiment" > experiment 1</a>
               </div>
             </div>
-            <div class="card">
+            <div class="card"  id="sample2">
+              <h5 class="card-title"> Sample 2</h5>
               <img src="images/input2.png" class="card-img-top wav2-img" alt="Card image cap">
               <div class="card-body">
                 The second sample was taken from all the numbers in mfcc vector.
@@ -187,10 +189,11 @@
                 each row has 44 by 13 matrix, when it is flattened, 572 length vector. 
                 We obtained a sample table of the size 30,825 rows and 574 columns. 
                 We carried out  
-                <a href="experiment.html#experiment2" > experiment 2</a>
+                <a href="experiment.html#experiment" > experiment 2</a>
               </div>
             </div>
-            <div class="card">
+            <div class="card" id="sample3">
+              <h5 class="card-title"> Sample 3</h5>
               <img src="images/input3.png" class="card-img-top wav2-img" alt="Card image cap">
               <div class="card-body">
                 When we run the Sequential model with previous samples,
@@ -202,7 +205,7 @@
                 With n_mfcc= 30, each audio file produces 30 minimums, 30 maximums, and so on, which makes 180 length vector. So, the third input data has this form of table. 
                 Therefore, we obtained a sample table of the size 8,732 rows and 180 columns. 
                 With sample 3, we carried out  
-                <a href="experiment.html#experiment3" > experiment 3</a>
+                <a href="experiment.html#experiment" > experiment 3</a>
               </div>
             </div>
           </div>
