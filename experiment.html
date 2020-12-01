@@ -58,9 +58,15 @@
               </p>
             </p>
             <h5> Overfitting </h5>
-            <p> The early stage of experiments shows the following training history with neuron=128,             showing overfitting. We took care of this with drop-out and regularization:
-              <img src="images/sequential_model_history.png" class="center-img">            
+            <p> The early stage of experiments shows the following training history with neuron=128, showing overfitting:
+              <img src="images/sequential_model_history.png" class="center-img mt-2">            
+              To avoid the overfitting, first we used cross validation as in shown in the 
+              <a href="#train-test-val"> below table. </a> Secondly, we drop the
+              training accuracy to obtain better test accuracy by using dropout, leading the their line
+              graphs get closer.
+              <img src="images/sequential_model_history2.png" class="center-img mt-2">
             </p>
+
           </div>
         </div>
         <div class="col-md-2">
@@ -89,7 +95,7 @@
                 <li>batch sizes = [16, 32]</li>
               </ul>
               For the cross validation, we chose four subsets as
-              <table border="0" class="dataframe table table-responsive table-striped">
+              <table border="0" class="dataframe table table-responsive table-striped" id="train_test_val">
                 <thead>
                   <tr style="text-align: center;">      
                     <th>Folders for test</th>      
