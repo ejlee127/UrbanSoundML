@@ -81,6 +81,9 @@ h5{
   margin-top: 10px;
 }
 
+a {
+  color: black
+}
 
 a:link {
   color: black;
@@ -88,14 +91,14 @@ a:link {
   text-decoration: none;
 }
 
+/*
 a:visited {
   color: purple;
-  /*background-color: transparent;*/
   text-decoration: none;
-}
+}*/
 
 a:hover {
-  color: red;
+  color: blue;
   background-color: transparent;
   text-decoration: underline;
 }
@@ -106,9 +109,13 @@ a:active {
   text-decoration: underline;
 }
 
+.btn:link {
+  color: white
+}
 .btn-primary {
-  background-color: rgb(129, 151, 212);
-  color: rgb(129, 151, 212)
+  background-color: rgb(33, 48, 85);
+  border-color:  rgb(33, 48, 85);
+  color: white
 }
 .card-big {
   margin-top: 10px;
@@ -140,7 +147,7 @@ a:active {
 }
 
 .metadata-img {
-  width: 80%;
+  width: 60%;
   height: auto;
   display: block;
   margin-left: auto;
