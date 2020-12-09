@@ -9,6 +9,13 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
+    <!-- ChartJS CSS-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.css" integrity="sha512-C7hOmCgGzihKXzyPU/z4nv97W0d9bv4ALuuEbSf6hm93myico9qa0hv4dODThvCsqQUmKmLcJmlpRmCaApr83g==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.css" integrity="sha512-/zs32ZEJh+/EO2N1b0PEdoA10JkdC3zJ8L5FTiQu82LR9S/rOQNfQN7U59U9BC12swNeRAz3HSzIL2vpp4fv3w==" crossorigin="anonymous" />
+
+    <!-- ChartJS script-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous"></script>
+  
     <!-- Our CSS -->
     <link rel="stylesheet" type="text/css" href="static/css/style.css">
    
@@ -70,7 +77,8 @@
               </tr>
             </tbody>
           </table>
-          <img src="images/best_models.png">
+          <h4> F1-Score vs. Recall of best models</h4>
+          <img src="images/best_models2.png">
         </div>
         <div class="col-md-2">
           <div>
@@ -81,8 +89,52 @@
           </div>
         </div>
       </div>
+      <div class="row">
+        <div class="col-md-10 ml-3">
+          <div class="card">
+            <h4 class="card-header"> 
+              Class Precisions of Experiments
+            </h4>
+            <canvas id="myBar"></canvas>
+          </div>
+        </div>
+      </div>
+      <!-- <div class = "row">
+        <div class="col-md-10 ml-2">
+          <div class="card-group">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title"> Experiment 1</h5>
+                <canvas id="exp1-bubble"></canvas>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title"> Experiment 2</h5>
+                <canvas id="exp2-bubble"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-10 ml-2">
+          <div class="card-group">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title"> Experiment 3</h5>
+                <canvas id="exp3-bubble"></canvas>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title"> Experiment 4</h5>
+                <canvas id="exp4-bubble"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
       <div class = "row"> 
-        <div class="col-md-10">
+        <div class="col-md-10 ml-5">
           <div class="card card-big" id="sequentialresult">
             <h4 class="card-header"> Detailed results of Sequential model</h4>
             <h5 class="card-title"> Instances in X-axis of the following charts</h5>
@@ -106,8 +158,8 @@
             <img src="images/exp2_result.png">
             <h5 class="card-title"> Experiment 3</h5>
             <img src="images/exp3_result.png">
-            <h5 class="card-title"> Experiment 4</h5>
-            <img src="images/exp4_result.png">
+            <!-- <h5 class="card-title"> Experiment 4</h5>
+            <img src="images/exp4_result.png"> -->
           </div>
         </div>        
       </div>
@@ -128,5 +180,8 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <!-- my JS -->
+    <script src="static/js/results_data.js"></script>
+    <script src="static/js/chart_results.js"></script>
   </body>
 </html>
