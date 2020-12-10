@@ -30,9 +30,9 @@ function barChart() {
 
     values = Object.values(bestScores).map( (sc)=>{
       console.log(sc)
-      prec_v = sc.avg_scores[0].precision
-      console.log(prec_v)
-      return prec_v[i]
+      f1_score = sc.avg_scores[0]["f1-score"]
+      console.log(f1_score)
+      return f1_score[i]
     });
     console.log(cl, values)
     var data_one = {
@@ -60,7 +60,7 @@ function barChart() {
       },
       title: {
           display: true,
-          text: "Precisions"
+          text: "F1-Scores"
       },
     }
   });
@@ -69,7 +69,7 @@ function barChart() {
 function bubbleChart(ctx, avg_scores) {
   //avg_scores is a dict.
   classNames = avg_scores["class"]
-  f1_scores = avg_scores['f1-score']
+  precisions = avg_scores['precision']
   recalls = avg_scores['recall']
   supports = avg_scores['support']
   var dataBubble = classNames.map((cl, i) => {
@@ -80,7 +80,7 @@ function bubbleChart(ctx, avg_scores) {
       backgroundColor: classColors[cl],
       borderColor: classColors[cl],
       data: [{
-        x: f1_scores[i],
+        x: precisions[i],
         y: recalls[i],
         r: supports[i]/50
       }]    
@@ -106,19 +106,19 @@ function bubbleChart(ctx, avg_scores) {
       },
       title: {
           display: true,
-          text: "f1-score vs. recall of classes"
+          text: "Precision vs. Recall of classes"
       },
       scales: {
         xAxes: [{
           scaleLable: {
             display: true,
-            labelString: "f1-score"
+            labelString: "Precision"
           }
         }],
         yAxes: [{
           scaleLable: {
             display: true,
-            labelString: "recall"
+            labelString: "Recall"
           }
         }]
       }
